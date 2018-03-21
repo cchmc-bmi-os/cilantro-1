@@ -223,10 +223,13 @@ define([
          */
         vocab: {
             fieldNameDisplay: function(names) {
-                return {
-                  single: names.single.toLowerCase() || '',
-                  plural: names.plural.toLowerCase() || ''
-                };
+                if (names.single.toLowerCase() !== 'fyler diagnosis') {
+                    return {
+                      single: names.single.toLowerCase() || '',
+                      plural: names.plural.toLowerCase() || ''
+                    };
+                }
+                return names;
             }
         }
     };
