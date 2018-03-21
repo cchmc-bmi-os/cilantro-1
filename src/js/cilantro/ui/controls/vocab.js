@@ -372,7 +372,7 @@ define([
             });
         },
 
-        triggerAscend: function() {
+        triggerAscend: function(event) {
             event.preventDefault();
             event.stopPropagation();
 
