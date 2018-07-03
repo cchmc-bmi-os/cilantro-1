@@ -68,7 +68,7 @@ define([
             c.router.navigate('query', {trigger: true});
 
             // Already being shown
-            if (this.currentView.model && this.currentView.model.id === model.id) return;
+            //if (this.currentView.model && this.currentView.model.id === model.id) return;
 
             var options = {
                 model: model,

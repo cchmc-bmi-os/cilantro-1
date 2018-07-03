@@ -5,8 +5,9 @@ define([
     'backbone',
     '../../core',
     '../base',
-    './stats'
-], function(_, Backbone, c, base, stats) {
+    './stats',
+    '../../query_aware'
+], function(_, Backbone, c, base, stats, query_aware) {
 
     var getLogicalType = function(attrs) {
         // Takes precedence since it is specified explicitly.
@@ -37,7 +38,11 @@ define([
             if (this.links.stats) {
                 this.stats = new stats.StatCollection();
                 this.stats.url = function() {
-                    return _this.links.stats;
+                    if (query_aware.checkQueryAware()) {
+                        return _this.links.stats + '?aware=true';
+                    } else {
+                        return _this.links.stats;
+                    }
                 };
             }
         },
@@ -64,8 +69,12 @@ define([
             }
             else {
                 var _this = this;
+                var url = this.links.distribution;
+                if (query_aware.checkQueryAware()) {
+                    url = url + '?aware=true'
+                }
                 Backbone.ajax({
-                    url: this.links.distribution,
+                    url: url,
                     dataType: 'json',
                     success: function(resp) {
                         if (cache) {
@@ -117,9 +126,12 @@ define([
             }
             else {
                 var _this = this;
-
+                var url = this.links.values;
+                if (query_aware.checkQueryAware()) {
+                    url = url + '?aware=true'
+                }
                 Backbone.ajax({
-                    url: this.links.values,
+                    url: url,
                     data: params,
                     dataType: 'json',
                     success: function(resp) {
