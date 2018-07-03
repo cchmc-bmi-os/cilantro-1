@@ -1,13 +1,27 @@
 /* global define */
 
 define([
+    'jquery',
     'underscore',
     'backbone',
     '../core',
     './base',
-    './field'
-], function(_, Backbone, c, base, field) {
+    './field',
+    '../query_aware'
+], function($, _, Backbone, c, base, field, query_aware) {
 
+    var updateQueryWhenSynced = function() {
+        this.fields.fetch();
+        reloadWorkspace();
+    }
+
+    var reloadWorkspace = function() {
+        console.log(this.id);
+        setTimeout(function() {
+            $('li.active a').trigger("click");
+        }, 500);
+
+    }
 
     var Concept = base.Model.extend({
         constructor: function() {
@@ -22,9 +36,28 @@ define([
             c.on(c.CONCEPT_FOCUS, function(id) {
                 if (this.id !== id) return;
 
+                // RELOAD EVERY TIME CONCEPT GETS FOCUS
+                // IF FIELDS AREN'T LOADED YET (CONCEPT IS NEW), FETCH WITH RESET TRUE
+                // OTHERWISE JUST FETCH (RESET=TRUE LEADS TO DUPLICATE QUERY VIEWS AND OTHER BUGS)
                 if (this.fields.length === 0) {
                     this.fields.fetch({reset: true});
+                } else {
+                    this.fields.fetch();
                 }
+                
+                //RELOAD WHENEVER THE QUERY AWARE RADIO TOGGLE IS CHANGED
+                $('.query-aware-selector-region').show();
+                $('.select-query-aware').unbind().click({model:this}, function(event) {
+                    $('.select-query-aware').removeClass('btn-primary');
+                    $(this).addClass('btn-primary');
+                    event.data.model.fields.fetch();
+                    reloadWorkspace();
+                });
+
+                // RELOAD EVERY TIME THE CONTEXT IS CHANGED
+                c.off(c.CONTEXT_SYNCED, updateQueryWhenSynced);     // remove any existing listeners
+                c.on(c.CONTEXT_SYNCED, updateQueryWhenSynced, this);    // add listener for this concept
+
             }, this);
         },
 
@@ -57,8 +90,9 @@ define([
 
         // Perform a remote search on this collection
         search: function(query, handler) {
+            var url = _.result(this, 'url');
             return Backbone.ajax({
-                url: _.result(this, 'url'),
+                url: url,
                 data: {
                     query: query,
                     brief: 1

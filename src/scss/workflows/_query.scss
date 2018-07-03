@@ -1,8 +1,16 @@
 .query-workflow {
+    
     .concept-workspace-region {
         // Account for the panels that are rendered alongside the workspace
         // area and add a gutter
         margin-left: $panel-outer-width + 20;
         margin-right: $panel-outer-width + 20;
     }
+
+    .query-aware-selector-region {
+    	padding-left: $panel-outer-width + 20;
+    	padding-right: $panel-outer-width + 20;
+    }
+
+
 }
