@@ -10,8 +10,9 @@ define([
     '../paginator',
     '../values',
     '../search',
-    '../../core'
-], function($, _, Marionette, controls, models, constants, paginator, values, search, c) {
+    '../../core',
+    '../../query_aware'
+], function($, _, Marionette, controls, models, constants, paginator, values, search, c, query_aware) {
 
     // Single page of values
     var SearchPageModel = models.Page.extend({
@@ -44,8 +45,12 @@ define([
         url: function() {
             var url = this.currentUrl || this.field.links.values;
 
-            if (this.urlParams) {
-                url = url + '?' + $.param(this.urlParams);
+            if (this.urlParams && query_aware.checkQueryAware()) {
+                url = url + '?' + $.param(this.urlParams) + '&aware=true';
+            } else if (query_aware.checkQueryAware()) {
+                url = url + '?aware=true';
+            } else if (this.urlParams) {
+                url = url + '?' + $.param(this.urlParams)
             }
             return url;
         }
