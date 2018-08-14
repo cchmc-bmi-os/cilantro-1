@@ -1,0 +1,116 @@
+.results-workflow {
+    @include transition(margin-right, 0.3s);
+
+    padding: 0 10px;
+
+    .results-workflow-navbar {
+        margin-bottom: 0px;
+
+        &.navbar-fixed-top {
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.1);
+
+            .navbar-inner {
+                border-radius: 0;
+                border-color: #ddd;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+
+        // Represents a media query to hide the text content of buttons in the
+        // navbar when the screen width drops below 1200px.
+        @media (max-width: 1200px) {
+            .large-display-button-text {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .navbar-inner {
+                .tooltip {
+                    visibility: hidden;
+               }
+            }
+        }
+
+        .navbar-inner {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+    }
+
+    &.panel-open {
+        margin-right: $panel-outer-width;
+
+        .results-workflow-navbar.navbar-fixed-top {
+            right: $panel-outer-width;
+        }
+    }
+
+    .result-count {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .count-region {
+        font-weight: bold;
+        font-size: 1.4em;
+    }
+
+    .paginator-region {
+        display: inline-block;
+    }
+
+    [data-toggle=columns] {
+        margin-left: 10px;
+    }
+
+    .table-region {
+        margin-top: 20px;
+        overflow-x: auto;
+
+        thead th {
+            cursor: pointer;
+            min-height: 100px;
+
+            &:hover {
+                background-color: #eee;
+            }
+        }
+    }
+
+    .export-progress-container {
+        position: relative;
+        width: 36px;
+        cursor: pointer;
+
+        .icon-circle-arrow-down {
+            font-size: 35px;
+            margin-left: 3px;
+        }
+        .progress {
+            width: 36px;
+            height: 6px;
+            margin: 0;
+            padding: 0;
+        }
+        .bar {
+            width: 100%;
+        }
+        .badge {
+            padding-left: 5px;
+            padding-right: 5px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+    }
+
+    .create-report-modal {
+        textarea {
+            resize: none;
+        }
+    }
+}

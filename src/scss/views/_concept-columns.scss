@@ -1,0 +1,141 @@
+.concept-columns-region {
+    height: 100%;
+}
+
+.concept-columns {
+    height: 100%;
+    position: relative;
+
+    .available-column {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 48%;
+
+        > * {
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+        .search-region {
+            top: 0px;
+        }
+
+        .available-region {
+            top: 40px;
+            bottom: 0;
+            overflow-y: auto;
+        }
+    }
+
+    .selected-column {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 48%;
+
+        > * {
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+        .toolbar {
+            top: 0px;
+
+            button {
+                float: right;
+            }
+        }
+
+        .selected-region {
+            top: 40px;
+            bottom: 0;
+            overflow-y: auto;
+        }
+    }
+
+    .selected-columns, .available-columns {
+        margin-left: 0;
+
+        li {
+            line-height: 28px;
+            position: relative;
+
+            button {
+                position: absolute;
+                right: 0;
+                top: 4px;
+            }
+
+            &.disabled {
+                color: #999;
+                button {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .available-columns .group {
+        border: 0;
+        padding: 0;
+        background: inherit;
+
+        > .heading {
+            cursor: default;
+        }
+
+        .section .items {
+            padding-left: 10px;
+        }
+
+        li {
+            padding: 0 5px;
+
+            &:hover {
+                background-color: #eee;
+            }
+
+            button {
+                right: 5px;
+            }
+        }
+    }
+
+    .selected-columns {
+        list-style: none;
+        margin-left: 0;
+        cursor: move;
+
+        li {
+            padding-right: 5px;
+            padding-left: 5px;
+
+            button {
+                right: 5px;
+            }
+        }
+
+        li:hover {
+            background-color: #fcf8e3;
+        }
+
+        .ui-sortable-helper {
+            box-shadow: 0 1px 5px #ddd;
+            border-radius: 3px;
+        }
+
+        .placeholder {
+            border: 2px dashed #aaa;
+            height: 22px;
+        }
+    }
+
+    .columns-remove-all-button {
+        margin-top: 5px;
+    }
+}

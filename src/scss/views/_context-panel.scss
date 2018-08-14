@@ -1,0 +1,103 @@
+#context-panel {
+    .actions-region {
+        @include clearfix;
+        border-bottom: 1px solid #aaa;
+        padding-bottom: 10px;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+
+        .count-label {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+    }
+
+    .filters-region {
+        overflow: auto;
+        position: absolute;
+        top: 40px;
+        bottom: 40px;
+    }
+
+    .info-region {
+        overflow: hidden;
+        height: 30px;
+        position: absolute;
+        bottom: 0;
+
+        // Only a single route-based button is shown at a given time. This is
+        // a fix to ensure the non-leftmost button does not contain a margin
+        // since it is a .span* class.
+        [data-route] {
+            margin-left: 0;
+        }
+    }
+
+    .context-filter {
+        position: relative;
+        cursor: pointer;
+
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        margin-bottom: 5px;
+        // If the description is empty, ensure it does not collapse
+        min-height: 22px;
+
+        // Variable left and right padding so description does not wrap
+        padding: 3px 34px 3px 24px;
+
+        [data-target=loader] {
+            text-align: center;
+        }
+
+        [data-action=enable], [data-target=required] {
+            position: absolute;
+            left: 5px;
+        }
+
+        [data-action=required] {
+            left: 8px;
+        }
+
+        [data-target=description] {
+            > ul {
+                margin-left: 0;
+                margin-bottom: 0;
+                list-style: none;
+                padding-left: 0;
+
+                li {
+                    line-height: 22px;
+                }
+            }
+
+            > ul ul li {
+                list-style: disc;
+            }
+
+            small {
+                font-variant: small-caps;
+                font-weight: 600;
+            }
+
+            .filter-value {
+                color: #0088cc;
+            }
+        }
+
+        [data-target=actions] {
+            position: absolute;
+            right: 5px;
+
+            [data-action=remove] {
+                color: rgb(180, 0, 0);
+            }
+        }
+
+        &.disabled {
+            color: #ccc;
+        }
+    }
+}

@@ -1,0 +1,45 @@
+@mixin value-item {
+    .value-item {
+        min-height: 20px;
+        position: relative;
+        padding: 3px 7px;
+        background-color: #f3f3f3;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+        margin-bottom: 5px;
+
+        > .actions {
+            position: absolute;
+            display: inline-block;
+            right: 7px;
+            margin-left: 10px;
+        }
+
+        &.disabled {
+            color: #999;
+            > .actions {
+                display: none;
+            }
+        }
+
+        .value-label {
+            margin-right: 25px;
+            display: inline-block;
+        }
+    }
+}
+
+.value-list {
+    @include value-item;
+
+    textarea {
+        @include box-sizing(border-box);
+        resize: vertical;
+        width: 100%;
+        min-height: 200px;
+    }
+}
+
+
+.search-value-list {
+    @include value-item;
+}

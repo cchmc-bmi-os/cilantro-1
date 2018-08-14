@@ -1,0 +1,12 @@
+<span class="range-event-target"></span>
+<input type=text class="range-lower" placeholder="[lower bound]" />
+<span class=muted> and </span>
+<input type=text class="range-upper" placeholder="[upper bound]"/>
+<a class="btn range-clear-button" href="#" title="Clear range values"><i class="icon-remove"></i></a>
+<a class="btn range-help-button" href="#" title="Show/hide help text"><i class="icon-question-sign"></i></a>
+<div><i>Click within either the lower or upper range value to overide the default selection behavior.</i><div>
+<div class="help-block">
+<hr/>
+<p>Entering a value on the left while leaving the right empty represents a filter matching all values greater than or equal to the supplied value. Conversely, entering a value on the right and leaving the left empty represents a filter matching all values less than or equal to the supplied value. Entering values in both boxes will match all values within the range specified. The opposite applies when <strong>not between</strong> is selected from the choices above.</p>
+<p>Clicking on the histograph will fill the range limits. If a range limit has been selected (by clicking in it before clicking on the graph), that limit will receive the value. If no limit is selected, an empty limit will receive the value (lower first, then upper). If both limits are defined, the upper limit will be updated.</p>
+</div>

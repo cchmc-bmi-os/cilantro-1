@@ -1,0 +1,43 @@
+.concept-info {
+    margin-bottom: 10px;
+
+    .name {
+        font-weight: bold;
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    .category {
+        color: #575757;
+
+        i {
+            margin: 0 5px;
+        }
+    }
+
+    .description {
+        position: relative;
+
+        &.ellipsis {
+            // Absolute positioned elements are "out of flow" and do not contain
+            // a height in normal document flow. This is to ensure some height exists.
+            min-height: 20px;
+
+            > .text {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+
+                position: absolute;
+                left: 0;
+                // Note, this is dependent on the size of the toggle
+                right: 60px;
+            }
+
+            .toggle {
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+}

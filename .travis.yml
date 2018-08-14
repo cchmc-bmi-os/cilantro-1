@@ -1,0 +1,24 @@
+language: python
+
+python:
+    - 2.7
+
+virtualenv:
+    system_site_packages: true
+
+before_install:
+    - sh bin/check_signoff.sh
+
+install:
+    - npm install -g grunt-cli
+    - npm install
+    - grunt jshint
+
+before_script:
+    - git clone --branch demo git://github.com/cbmi/harvest-openmrs.git
+    - pip install -r harvest-openmrs/requirements.txt
+    - pip install uwsgi
+    - uwsgi --master --enable-threads --http :8000 --chdir harvest-openmrs --wsgi-file wsgi.py &
+
+script:
+    - grunt test --verbose

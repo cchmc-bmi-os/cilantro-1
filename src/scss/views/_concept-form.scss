@@ -1,0 +1,16 @@
+.concept-form {
+
+    .links-region {
+
+    }
+
+    .fields-region .field-form {
+        padding: 10px 0;
+
+        // No extra margins..
+        &:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+    }
+}

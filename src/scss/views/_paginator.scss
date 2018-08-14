@@ -1,0 +1,20 @@
+.paginator {
+    .page-numbers {
+        position: relative;
+        top: 2px;
+        padding: 5px 10px;
+        color: #575757;
+    }
+
+    .current-page, .page-count {
+        font-size: 1.1em;
+        font-weight: 500;
+        color: #333;
+    }
+
+    &.mini {
+        [data-page=first], [data-page=last] {
+            display: none;
+        }
+    }
+}

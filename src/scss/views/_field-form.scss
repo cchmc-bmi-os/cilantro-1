@@ -1,0 +1,51 @@
+.field-form {
+     .actions-region {
+        @include clearfix;
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1px solid #ddd;
+
+        .alert {
+            margin-bottom: 0;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            box-shadow: none;
+            width: 70%;
+        }
+
+        .btn {
+            float: right;
+            // Account for height discrepancy between alert and button
+            margin-bottom: 1px;
+        }
+    }
+
+    &.condensed {
+        .stats-region {
+            display: none;
+        }
+
+        .info-region {
+            font-size: 0.85em;
+        }
+
+        .info-bar-chart {
+            .toolbar {
+                display: none;
+            }
+
+            .info-bar {
+                height: 20px;
+
+                .bar {
+                    height: 20px;
+                }
+
+                .bar-mask {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+}

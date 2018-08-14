@@ -1,0 +1,15 @@
+#concept-panel {
+    .search-region {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+    }
+
+    .index-region {
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: absolute;
+        top: 40px;
+        bottom: 0;
+    }
+}

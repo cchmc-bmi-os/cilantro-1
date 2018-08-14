@@ -1,0 +1,70 @@
+.accordion {
+
+    .group {
+        margin-bottom: 5px;
+        border: 1px solid #ddd;
+        padding: 3px 5px;
+        background: #fff;
+        border-radius: 3px;
+
+        > .heading {
+            font-weight: 600;
+            position: relative;
+            cursor: pointer;
+
+            [data-toggle=expand], [data-toggle=collapse] {
+                position: absolute;
+                right: 0;
+                font-size: 0.8em;
+            }
+
+            // Default state is expanded
+            [data-toggle=expand] {
+                display: none;
+            }
+        }
+
+        &.collapsed {
+            > .heading {
+                [data-toggle=expand] {
+                    display: block;
+                }
+
+                [data-toggle=collapse] {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .section {
+        > .heading {
+            color: #575757;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+    }
+
+    .section .items {
+        margin-top: 5px;
+        // Flush against the right side
+        padding-right: 0;
+    }
+
+    .item {
+            padding-left: 0.5em;
+            text-indent:-0.5em;
+          }
+
+
+
+    // Bootstrap assumes the icon will be on the left side before the text.
+    // However, this gets applied to the button as well.
+    .nav-list button {
+        [class^=icon-], [class*=icon-] {
+            margin-right: 0;
+        }
+    }
+}

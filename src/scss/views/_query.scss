@@ -1,0 +1,39 @@
+.query-list {
+    .query-item {
+        border-bottom: 1px solid #ddd;
+        padding: 5px 0;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        .details {
+            display: none;
+        }
+
+        [data-target=toggle-details] {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .owner, .non-owner {
+            float: right;
+        }
+
+        .owner button {
+            display: none;
+        }
+
+        h6 {
+            margin-bottom: 0;
+        }
+
+        ul {
+            margin-top: 0;
+        }
+    }
+}
+
+.toolbar {
+    margin-bottom: 0;
+}

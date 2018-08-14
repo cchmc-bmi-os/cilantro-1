@@ -1,0 +1,18 @@
+<div>
+  <script>
+    function toggle_awareness(){
+    var button = $('#toggle_awareness_button');
+    if(BE_AWARE){
+    BE_AWARE = false;
+    button.text("view filtered results");
+    } else {
+    BE_AWARE = true;
+    button.text("view unfiltered results");
+    }
+    cilantro.trigger(cilantro.CONTEXT_SYNCED)
+    }
+  </script>
+  <button id='toggle_awareness_button' style='float: right;' onclick="toggle_awareness()">view unfiltered results</button>
+</div>
+<div class="main-region"></div>
+
